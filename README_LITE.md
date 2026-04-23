@@ -2,6 +2,7 @@
 
 ## 介紹
 EAS_nanoowl 提供以文字驅動（prompt-driven）的視覺推論能力，可在邊緣裝置上執行即時目標偵測與樹狀語意推論（Tree Prediction），適合智慧製造、零售場域、公共空間與工業監控等情境的快速 PoC 與量產導入。
+
 原始專案：https://github.com/NVIDIA-AI-IOT/nanoowl
 
 - **Category**：通用領域（General-purpose Edge Vision AI）
