@@ -23,7 +23,7 @@ EAS_nanoowl 核心採用 NanoOWL 技術路線，整合以下模型能力：
 
 | Platform | Hardware Spec | OS | Edge AI SDK |
 |---|---|---|---|
-| AIR-075 | NVIDIA Jetson Thor - RAM: 128/64 GB, Storage: 512 GB | JetPack 7.1 | [Install]([https://docs.edge-ai-sdk.advantech.com/docs/Turtorial/Document/Linux/User_Manual-3.0](https://docs.edge-ai-sdk.advantech.com/docs/Hardware/AI_System/Nvidia/Jetson%20Thor/AIR-075)) |
+| AIR-075 | NVIDIA Jetson Thor - RAM: 128/64 GB, Storage: 512 GB | JetPack 7.1 | [Install](https://docs.edge-ai-sdk.advantech.com/docs/Hardware/AI_System/Nvidia/Jetson%20Thor/AIR-075)) |
 
 ---
 
