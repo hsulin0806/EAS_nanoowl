@@ -67,7 +67,3 @@ Open: `http://<device-ip>:7860`
 
 ## Result
 <p align="center"> <img src="https://www.jetson-ai-lab.com/images/tutorials/nanoowl_chrome_window.png" width="70%" /> </p>
-  Without this mapping, the container cannot access the camera.
-
-- Port 7860 conflict:
-  Stop old containers or other containers using port 7860, then restart.
