@@ -67,4 +67,4 @@ docker compose up -d
 Open: `http://<device-ip>:7860`
 
 ## Result
-<p align="center"> <img src="assets/tree_predict_out.jpg" width="70%" /> </p>
+<p align="center"> <img src="assets/nanoowl_chrome_window.png" width="70%" /> </p>
