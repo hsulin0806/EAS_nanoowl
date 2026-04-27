@@ -1,113 +1,91 @@
 # <PROJECT_NAME>
 
-<ONE_LINE_VALUE_PROPOSITION>
+<PROJECT_ONE_LINE_DESCRIPTION>
 
-## 專案資訊
+Upstream project: <<UPSTREAM_REPO_URL>>
 
-### 1) 專案定位
-<PROJECT_POSITIONING>
+- **Category**: <PROJECT_CATEGORY>
 
-### 2) 模型介紹
-- 核心模型：<CORE_MODEL_1>、<CORE_MODEL_2>
-- 推論流程：<INFERENCE_PIPELINE_HIGHLIGHT>
-- 加速方式：<ACCELERATION_PATH>
-- 技術來源：<UPSTREAM_OR_PAPER_LINK>
-
-### 3) 相依來源與封裝策略（必填）
-- 已 vendor 到 repo 的核心檔案：
-  - <VENDORED_COMPONENT_1>
-  - <VENDORED_COMPONENT_2>
-- 外部依賴（pip/apt）：
-  - <EXTERNAL_DEP_1>
-  - <EXTERNAL_DEP_2>
-- 不依賴 runtime/build-time clone upstream：<YES_OR_EXPLAIN>
-
-### 4) 為什麼先用 Edge_AI_SDK InferenceKit
-- 連結：<https://ess-wiki.advantech.com.tw/view/Edge_AI_SDK/InferenceKit>
-- 建議流程：先安裝 InferenceKit，再安裝本專案
-- 導入好處：
-  - <BENEFIT_1>
-  - <BENEFIT_2>
-  - <BENEFIT_3>
-
-### 5) 已驗證硬體平台
-| 平台 | 驗證狀態 | 連結 | 備註 |
-|---|---|---|---|
-| <HW_1> | ✅ 已驗證可運作 | <HW_1_LINK> | <HW_1_NOTE> |
-| （預留）其他平台 | ⏳ 待驗證 | - | 後續補充硬體與版本資訊 |
-
-### 6) 執行結果示意
 <p align="center">
-  <img src="<RESULT_IMAGE_OR_GIF_1>" width="48%" />
-  <img src="<RESULT_IMAGE_OR_GIF_2>" width="48%" />
+  <img src="assets/<HERO_IMAGE_OR_GIF>" width="70%" />
 </p>
 
----
+## <MODEL_SECTION_TITLE>
 
-## 開發者資訊（安裝與執行）
+- **<MODEL_FEATURE_1_TITLE>**  
+  <MODEL_FEATURE_1_DESCRIPTION>
+- **<MODEL_FEATURE_2_TITLE>**  
+  <MODEL_FEATURE_2_DESCRIPTION>
+- **<MODEL_FEATURE_3_TITLE>**  
+  <MODEL_FEATURE_3_DESCRIPTION>
 
-> Upstream 參考：<UPSTREAM_REPO_LINK>
+## Supported Platform
 
-### 0) 前置條件
-1. 已完成 InferenceKit 安裝（建議）
-2. <RUNTIME_REQUIREMENT>
-3. <DEVICE_REQUIREMENT>
-
-### 1) 建置（Host）
-```bash
-cd <PROJECT_DIR>
-<BUILD_COMMANDS>
-```
-
-### 2) 第一次啟動（線上準備）
-```bash
-<FIRST_RUN_COMMAND>
-```
-
-首次正常訊號：
-- <FIRST_RUN_SIGNAL_1>
-- <FIRST_RUN_SIGNAL_2>
-- <FIRST_RUN_SIGNAL_3>
-
-### 3) 第二次啟動（快取重用）
-```bash
-<SECOND_RUN_COMMAND>
-```
-
-### 4) 離線啟動（可選）
-```bash
-<OFFLINE_RUN_COMMAND>
-```
-
-### 5) 驗證方式
-- Web UI：`http://<device-ip>:<port>`
-- 健康檢查：
-```bash
-<HEALTHCHECK_COMMAND>
-```
-
-### 6) 常見問題
-- <FAQ_1>
-- <FAQ_2>
-- <FAQ_3>
+| Platform | Hardware Spec | OS | Edge AI SDK |
+|---|---|---|---|
+| <PLATFORM_NAME> | <HARDWARE_SPEC> | <OS_VERSION> | [Install](<EDGE_AI_SDK_LINK>) |
+| (Reserved) Other platforms | <TO_BE_CONFIRMED> | <TO_BE_CONFIRMED> | - |
 
 ---
 
-## 最低驗收門檻（必填）
+# Setup
+
+## Step 1: Download this project
+```bash
+mkdir -p <PROJECT_PARENT_DIR>
+cd <PROJECT_PARENT_DIR>
+git clone <PROJECT_REPO_URL>
+```
+
+## Step 2: Check AI environment
+```bash
+<ENV_CHECK_COMMAND>
+```
+Expected: pass.
+
+## Step 3: Ensure a camera device is connected
+```bash
+ls -l /dev/video*
+```
+If no video device is found, leave the container and verify the video device is visible on the host.
+
+---
+
+# Development and Deployment
+
+## Setup 1: Build Docker image
 ```bash
 cd <PROJECT_DIR>
-docker build -t <IMAGE_TAG> -f <DOCKERFILE_PATH> .
+docker build -t <IMAGE_TAG> -f ./Dockerfile .
+```
+
+## Setup 2: Launch the demo
+```bash
 docker compose up -d
+```
+
+## Setup 3: Verify service status (required)
+```bash
 docker compose ps -a
 ```
+Expected: target service status is `Up`.
 
-期望結果：
-- Build 完成（exit code 0）
-- 目標服務狀態為 `Up`
-- 對外 Port 正常映射
+## Setup 4: Open your browser
+Open: `http://<device-ip>:<port>`
+
+## Result
+<p align="center"> <img src="assets/<RESULT_IMAGE>" width="70%" /> </p>
 
 ---
 
-## 文件規範
-本文件遵循 `AI_PROJECT_DOC_STANDARD.md`。  
-可直接複製的 README 範本：`AI_PROJECT_README_TEMPLATE.md`
+## Dependency Packaging Notes (required)
+
+- Core runtime source is included in this repository (no required build-time/runtime `git clone` for core app source).
+- External dependencies are limited to system/pip packages defined in `Dockerfile`.
+
+---
+
+## Document Standard
+
+This document follows `AI_PROJECT_DOC_STANDARD.md`.  
+Template source: `AI_PROJECT_README_TEMPLATE.md`
