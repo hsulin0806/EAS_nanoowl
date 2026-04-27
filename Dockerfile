@@ -23,11 +23,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
 
-WORKDIR /opt
-COPY . /opt/eas_nanoowl
-
-# Use upstream NanoOWL source as runtime core
-RUN git clone --depth 1 https://github.com/NVIDIA-AI-IOT/nanoowl /opt/nanoowl
+WORKDIR /opt/nanoowl
+COPY . /opt/nanoowl
 
 # Core runtime deps used by NanoOWL examples
 RUN python3 -m pip install --break-system-packages \
@@ -47,14 +44,14 @@ RUN python3 -m pip install --break-system-packages tensorrt
 RUN python3 -m pip install --break-system-packages git+https://github.com/NVIDIA-AI-IOT/torch2trt.git
 
 # Install NanoOWL package in editable mode
-RUN python3 -m pip install --break-system-packages -e /opt/nanoowl
+RUN python3 -m pip install --break-system-packages -e .
 
 # Tree demo runtime deps
 RUN python3 -m pip install --break-system-packages aiohttp matplotlib git+https://github.com/openai/CLIP.git
 
 RUN mkdir -p /opt/nanoowl/docker/jetpack7-thor
-RUN cp /opt/eas_nanoowl/smoke_test.py /opt/nanoowl/docker/jetpack7-thor/smoke_test.py && \
-    cp /opt/eas_nanoowl/run_tree_demo_persistent.sh /opt/nanoowl/docker/jetpack7-thor/run_tree_demo_persistent.sh
+COPY ./smoke_test.py /opt/nanoowl/docker/jetpack7-thor/smoke_test.py
+COPY ./run_tree_demo_persistent.sh /opt/nanoowl/docker/jetpack7-thor/run_tree_demo_persistent.sh
 RUN chmod +x /opt/nanoowl/docker/jetpack7-thor/run_tree_demo_persistent.sh
 
 CMD ["python3", "docker/jetpack7-thor/smoke_test.py"]
