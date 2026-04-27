@@ -54,7 +54,7 @@ If no video device is found, leave the container and verify the video device is 
 ## Setup 1: Build Docker image
 ```bash
 cd /opt/Advantech/EdgeAI/EdgeAIHub/NanoOWL/
-docker build -t nanoowl:jp7-thor-persist -f docker/jetpack7-thor/Dockerfile .
+docker build -t nanoowl:jp7-thor-persist -f ./Dockerfile .
 ```
 
 ## Setup 2: Launch the demo
